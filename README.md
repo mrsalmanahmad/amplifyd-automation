@@ -60,7 +60,7 @@ To verify that all of Appium's dependencies are met you can use appium-doctor. I
 }
 
 ## IntelliJ IDEA Community Edition
-Install MARVEN
+Install MAVEN
 https://www.youtube.com/watch?v=N7vY3cPSo8g&list=PLhW3qG5bs-L8npSSZD6aWdYFQ96OEduhk&index=7
 
 # ENVIRONMENT VARIABLE
