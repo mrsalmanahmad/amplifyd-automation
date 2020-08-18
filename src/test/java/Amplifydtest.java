@@ -69,9 +69,9 @@ public class Amplifydtest {
         MobileElement createcamapignbtn = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/navigation_add_campaign"));
         createcamapignbtn.click();
         System.out.println("Create Campaign selected Sucessful");
-        MobileElement paidcampaignbox = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/paid_campaign_chk_box"));
+        MobileElement paidcampaignbox = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/give_way_chk_box"));
         paidcampaignbox.click();
-        System.out.println("Paid campaign selected");
+        System.out.println("Giveaway campaign selected");
         MobileElement proceedbtn = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/proceed_action"));
         proceedbtn.click();
         System.out.println("On step 1");
@@ -100,10 +100,7 @@ public class Amplifydtest {
         AddCategorybox.click();
         MobileElement tick = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/ibRight"));
         tick.click();
-//        MobileElement noofinfl = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/influencer_count"));
-//        noofinfl.click();
-//        MobileElement okbtn = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/influencer_count"));
-//        okbtn.click();
+
         MobileElement location = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/add_location_Iv"));
         location.click();
         MobileElement addlocation = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/cat_selected_checkbox"));
@@ -112,7 +109,23 @@ public class Amplifydtest {
         tick2.click();
         MobileElement Next2 = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/btn_next"));
         Next2.click();
+        System.out.println("Selecting Budget");
 
+        MobileElement click_budget2 = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/select_category_layout"));
+        click_budget2.click();
+
+//        MobileElement budget = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/sedittext_budget"));
+//        MobileElement budget = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/campaign_creation_title"));
+//        int price = 12000;
+//        //budget.sendKeys("5000");
+//        budget.sendKeys(String.valueOf(price));
+
+        MobileElement final_s = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/btn_next"));
+        final_s.click();
+
+        MobileElement start_c = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/btn_start_campaign"));
+        start_c.click();
+        System.out.println("Campaign Created Sucessfully");
 
     }
 }
