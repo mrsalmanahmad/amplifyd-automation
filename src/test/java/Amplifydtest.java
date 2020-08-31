@@ -1,12 +1,26 @@
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
+import org.openqa.selenium.interactions.HasTouchScreen;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+
+import java.time.Duration;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import io.appium.java_client.touch.offset.PointOption;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.touch.WaitOptions;
+import static io.appium.java_client.touch.offset.ElementOption.element;
 
 public class Amplifydtest {
     static AppiumDriver driver;
@@ -22,13 +36,14 @@ public class Amplifydtest {
     public static void openAmplifyd() throws MalformedURLException, InterruptedException {
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("deviceName","emulator-5554");
+//        cap.setCapability("deviceName","9885f35044584b3941");
         cap.setCapability("platformName","Android");
         cap.setCapability("appPackage","com.logicon.amplifyd.debug");
         cap.setCapability("appActivity","com.logicon.amplifyd.activities.prelogin.SplashActivity");
 
         URL url = new URL("http://127.0.0.1:4723/wd/hub");
         driver = new AppiumDriver<MobileElement>(url,cap);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
         System.out.println("Application Started ....");
         System.out.println("Splash Screen");
         System.out.println("Wait for Getting Started");
@@ -75,12 +90,29 @@ public class Amplifydtest {
         MobileElement proceedbtn = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/proceed_action"));
         proceedbtn.click();
         System.out.println("On step 1");
+        // Date to add in campaign name
+        DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        Date dateobj = new Date();
+        System.out.println(df.format(dateobj));
+
         MobileElement camptitle = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/campaign_creation_title"));
-        camptitle.sendKeys("Auto Campaign");
+        camptitle.sendKeys("Auto Campaign "+ dateobj);
         System.out.println("Campaign title added");
         MobileElement camppurpose = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/selected_purpose_checkbox"));
         camppurpose.click();
         System.out.println("Campaign propose selected");
+
+        //The viewing size of the device
+        Dimension size = driver.manage().window().getSize();
+        //x position set to mid-screen horizontally
+        int width = size.width / 2;
+        //Starting y location set to 80% of the height (near bottom)
+        int startPoint = (int) (size.getHeight() * 0.80);
+        //Ending y location set to 20% of the height (near top)
+        int endPoint = (int) (size.getHeight() * 0.20);
+        new TouchAction(driver).press(PointOption.point(width, startPoint)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(2000))).moveTo(PointOption.point(width, endPoint)).release().perform();
+
+
         MobileElement Description = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/campaign_creation_description_textview"));
         Description.click();
         System.out.println("Adding Description");
@@ -117,16 +149,16 @@ public class Amplifydtest {
 //        MobileElement budget = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/sedittext_budget"));
 //        MobileElement budget = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/campaign_creation_title"));
 //        int price = 12000;
-//        //budget.sendKeys("5000");
+//        budget.sendKeys("5000");
 //        budget.sendKeys(String.valueOf(price));
 
         MobileElement final_s = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/btn_next"));
         final_s.click();
-
+        driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))"+".scrollToEnd(55);"));
         MobileElement start_c = (MobileElement) driver.findElement(By.id("com.logicon.amplifyd.debug:id/btn_start_campaign"));
         start_c.click();
         System.out.println("Campaign Created Sucessfully");
-
+//      open new proposal
     }
 }
  
