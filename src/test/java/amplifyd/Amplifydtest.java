@@ -15,13 +15,16 @@ import static amplifyd.CreatePaidandGiveawayCampaign.createpaidandgiveawaycampag
 
 public class Amplifydtest {
     static AppiumDriver driver;
+    private static String user_type = "Brand";
+
     public static void main(String[] args){
         try{
-            openAmplifyd();
-            loginasbrand();
-            creategivewaycampaign();
-            createpaidcampaign();
-            createpaidandgiveawaycampagin();
+            if (user_type == "Brand"){
+               brand_side();
+            }
+            else if (user_type == "Influencer"){
+               influecner_side();
+            }
         }catch (Exception exp){
             System.out.println(exp.getCause());
             System.out.println(exp.getMessage());
@@ -43,5 +46,18 @@ public class Amplifydtest {
         System.out.println("Splash Screen");
         System.out.println("Wait for Getting Started");
     }
+
+    public static void influecner_side() throws MalformedURLException, InterruptedException{
+        openAmplifyd();
+    }
+
+    public static void brand_side() throws MalformedURLException, InterruptedException{
+        openAmplifyd();
+        loginasbrand();
+        creategivewaycampaign();
+        createpaidcampaign();
+        createpaidandgiveawaycampagin();
+    }
 }
- 
+
+

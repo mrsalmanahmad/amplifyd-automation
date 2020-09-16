@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Amplifyd Mobile Automation" />
+        <module name="amplifyd-automation" />
       </profile>
     </annotationProcessing>
   </component>

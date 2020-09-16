@@ -41,7 +41,7 @@ public class LoginAsBrand {
         password.sendKeys("Abcde@123");
         loginbtn.click();
         System.out.println("Login Sucessful");
-        MobileElement ok = (MobileElement) Amplifydtest.driver.findElement(By.id("com.logicon.amplifyd.debug:id/btn_close_prompt_dialog"));
-        ok.click();
+//        MobileElement ok = (MobileElement) Amplifydtest.driver.findElement(By.id("com.logicon.amplifyd.debug:id/btn_close_prompt_dialog"));
+//        ok.click();
     }
 }
